@@ -1,0 +1,8 @@
+# ignore target
+target/**
+
+# ignore idea
+.idea/**
+
+# ignore imi
+gary_spring_boot_redis.iml
