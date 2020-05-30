@@ -1,19 +1,12 @@
 # Base on the springboot project, use to quickly build small and medium api or Restful API projects
-* Makes use of JWT authentication for securing an exposed REST API
 * Use caching with annotations. You can add,delete,query and updare information by redis.
+* Makes use of JWT authentication for securing an exposed REST API
 
 ## Reference Documents: 
-* https://www.baeldung.com/spring-boot-security-autoconfiguration
 * https://www.baeldung.com/spring-cache-tutoriala
+* https://www.baeldung.com/spring-boot-security-autoconfiguration
 
 ### Here is a quick teaser of an application :
-#### Using JWT authentication in Springboot
-    {
-      "status": 200,
-      "msg": "Login Success",
-      "data": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTA4MjEwNTIsInVzZXJuYW1lIjoiZ2FyeSJ9.6hHez-JqknYoUlB9NFDhRLQP1ysN93kWWqbcxfA4GPA"
-    }
-
 #### Using Spring Data Redis in Springboot
     @Cacheable(value = "city", key="'city_'.concat(#a0)")
     public CityEntity findById(Integer id) {
@@ -38,6 +31,13 @@
     public void deleteById(int id) {
         logger.info("delete row");
         cityMapper.deleteById(id);
+    }
+
+#### Using JWT authentication in Springboot
+    {
+      "status": 200,
+      "msg": "Login Success",
+      "data": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTA4MjEwNTIsInVzZXJuYW1lIjoiZ2FyeSJ9.6hHez-JqknYoUlB9NFDhRLQP1ysN93kWWqbcxfA4GPA"
     }
 
 ## Requirements
