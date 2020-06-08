@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
 public interface OrderDetailMapper {
 
     /**
-     * insert OrderDetail
+     * insert order detail
      * @param orderDetail
      * @return
      */
-    public void insert(OrderDetail orderDetail);
+    public int insert(OrderDetail orderDetail);
 
 }

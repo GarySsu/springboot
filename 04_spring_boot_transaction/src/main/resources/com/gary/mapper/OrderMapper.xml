@@ -6,7 +6,7 @@
 
     <!-- add order -->
     <insert id="insert" parameterType="com.gary.model.Order" useGeneratedKeys="true" keyProperty="id">
-      insert into order (order_num,game,device,customer_name)
+      insert into order_master (order_num,game,device,customer_name)
       values (#{orderNum}, #{game}, #{device}, #{customerName})
     </insert>
 
