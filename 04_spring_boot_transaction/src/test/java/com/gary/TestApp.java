@@ -28,4 +28,14 @@ public class TestApp {
         orderService.addOrderAndSQLException();
     }
 
+    @Test
+    public void addOrderRequired(){
+        orderService.addOrderRequired();
+    }
+
+    @Test
+    public void addOrderSupports(){
+        orderService.addOrderSupports();
+    }
+
 }
