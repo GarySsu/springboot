@@ -6,7 +6,7 @@
 
     <!-- query user's authority -->
     <select id="findByid" parameterType="Integer" resultType="com.gary.model.UserAuthorityEntity">
-        select * from authority where id = #{value};
+        select * from sys_authority where id = #{value};
     </select>
 
 </mapper>

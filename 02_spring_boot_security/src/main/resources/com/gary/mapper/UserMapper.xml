@@ -6,7 +6,7 @@
 
     <!-- query user's detail -->
     <select id="findByUsername" parameterType="string" resultType="com.gary.model.UserEntity">
-        select * from user where username = #{value};
+        select * from sys_user where username = #{value};
     </select>
 
 </mapper>
