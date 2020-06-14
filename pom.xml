@@ -13,6 +13,7 @@
         <module>02_spring_boot_security</module>
         <module>03_spring_boot_redis</module>
         <module>04_spring_boot_transaction</module>
+        <module>05_spring_boot_rabbitmq</module>
     </modules>
 
     <!-- spring boot -->
