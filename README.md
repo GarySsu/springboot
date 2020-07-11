@@ -97,5 +97,44 @@
         orderDetailMapper.insert(processOrderDetailObject(id));
     }
 
-## Requirements
+#### Using Rabbitmq handle asynchronous request
+    rabbitmq binding queue to exchange
+    /**
+     * set exchange for consumers
+     FanoutExchange: distribute message to blind queue without the concept of routingkey
+     HeadersExchange: add attribute key-value mapping
+     DirectExchange: distribute message to designated queue according to routingkey
+     TopicExchange: multi-keyword mapping
+     */
+    @Bean
+    public DirectExchange defaultExchange() {
+        return new DirectExchange(EXCHANGE, true, false);
+    }
+
+    /**
+     * set queue_one for consumers
+     * @return
+     */
+    @Bean
+    public Queue queueEmail() {
+        return new Queue("queue_email", true); 
+    }
+
+    /**
+     * let queue bind with exchange
+     * @return
+     */
+    @Bean
+    public Binding binding() {
+        return BindingBuilder.bind(queueEmail()).to(defaultExchange()).with(RabbitmqConfig.ROUTINGKEY1);
+    }    
+
+
+### Requirements
+####Redis install by docker
+    docker pull redis:6.0.1-alpinec
+    docker run -itd --name redis-test -p 6379:6379 redis
     
+####Rabbitmq install by docker
+    docker pull rabbitmq:management
+    docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmq rabbitmq:management

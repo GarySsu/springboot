@@ -14,6 +14,7 @@
         <module>03_spring_boot_redis</module>
         <module>04_spring_boot_transaction</module>
         <module>05_spring_boot_rabbitmq</module>
+        <module>06_spring_boot_telegram_bot</module>
     </modules>
 
     <!-- spring boot -->

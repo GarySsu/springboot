@@ -1,8 +1,11 @@
 package com.gary.controller;
 
 import com.gary.config.RabbitmqConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,6 +13,8 @@ import java.util.UUID;
 
 @RestController
 public class MessageController implements RabbitTemplate.ConfirmCallback {
+
+    private static final Logger logger = LoggerFactory.getLogger(MessageController.class);
 
     private RabbitTemplate rabbitTemplate;
 
@@ -23,8 +28,8 @@ public class MessageController implements RabbitTemplate.ConfirmCallback {
      * @param msg
      * @return
      */
-    @RequestMapping("sendEmail")
-    public String sendEmail(String msg){
+    @RequestMapping("sendEmail/{msg}")
+    public String sendEmail(@PathVariable("msg") String msg){
         String uuid = UUID.randomUUID().toString();
         CorrelationData correlationId = new CorrelationData(uuid);
         rabbitTemplate.convertAndSend(RabbitmqConfig.EXCHANGE, RabbitmqConfig.ROUTINGKEY1, msg,
@@ -37,8 +42,8 @@ public class MessageController implements RabbitTemplate.ConfirmCallback {
      * @param msg
      * @return
      */
-    @RequestMapping("sendShortMessage")
-    public String sendShortMessage(String msg){
+    @RequestMapping("sendShortMessage/{msg}")
+    public String sendShortMessage(@PathVariable("msg") String msg){
         String uuid = UUID.randomUUID().toString();
         CorrelationData correlationId = new CorrelationData(uuid);
         rabbitTemplate.convertAndSend(RabbitmqConfig.EXCHANGE, RabbitmqConfig.ROUTINGKEY2, msg,
@@ -54,11 +59,11 @@ public class MessageController implements RabbitTemplate.ConfirmCallback {
      * @param cause
      */
     public void confirm(CorrelationData correlationData, boolean ack, String cause) {
-        System.out.println("customer's uuid:"+correlationData);
+        logger.info("customer's uuid:"+correlationData);
         if (ack) {
-            System.out.println("send message success");
+            logger.info("send message success");
         } else {
-            System.out.println("send message failed:"+cause);
+            logger.info("send message failed:"+cause);
         }
     }
 

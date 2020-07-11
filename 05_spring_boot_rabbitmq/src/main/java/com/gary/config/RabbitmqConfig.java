@@ -1,5 +1,7 @@
 package com.gary.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
@@ -13,6 +15,8 @@ import org.springframework.core.env.Environment;
 @Configuration
 @PropertySource("classpath:application.properties")
 public class RabbitmqConfig {
+
+    private static final Logger logger = LoggerFactory.getLogger(RabbitmqConfig.class);
 
     @Autowired
     private Environment env;
@@ -58,7 +62,7 @@ public class RabbitmqConfig {
      */
     @Bean
     public Queue queueEmail() {
-        return new Queue("queue_email", true); //佇列持久
+        return new Queue("queue_email", true);
     }
 
     /**
@@ -76,7 +80,7 @@ public class RabbitmqConfig {
      */
     @Bean
     public Queue queueShortMessage() {
-        return new Queue("queue_short_message", true); //佇列持久
+        return new Queue("queue_short_message", true);
     }
 
     /**
@@ -103,7 +107,7 @@ public class RabbitmqConfig {
         container.setMessageListener(new ChannelAwareMessageListener() {
             public void onMessage(Message message, com.rabbitmq.client.Channel channel) throws Exception {
                 byte[] body = message.getBody();
-                System.out.println("receive email message : "  + new String(body));
+                logger.info("receive email message : "  +new String(body));
                 channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
             }
         });
@@ -125,7 +129,7 @@ public class RabbitmqConfig {
         container.setMessageListener(new ChannelAwareMessageListener() {
             public void onMessage(Message message, com.rabbitmq.client.Channel channel) throws Exception {
                 byte[] body = message.getBody();
-                System.out.println("receive short message : "  +new String(body));
+                logger.info("receive short message : "  +new String(body));
                 channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
             }
         });
