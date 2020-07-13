@@ -136,7 +136,7 @@
     }    
 
 #### Follow Telegram API to send message of photo for channel
-
+![Optional Text](../gary_springboot/blob/master/06_spring_boot_telegram_bot/src/main/resources/photo/screenshot.png)
 
 ### Requirements
 #### Mysql install by docker
