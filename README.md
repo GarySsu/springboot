@@ -136,6 +136,7 @@
     }    
 
 #### Follow Telegram API to send message of photo for channel
+<img src="https://github.com/GarySsu/gary_springboot/blob/master/06_spring_boot_telegram_bot/src/main/resources/photo/screenshot.png" width="250">
 ![Optional Text](https://github.com/GarySsu/gary_springboot/blob/master/06_spring_boot_telegram_bot/src/main/resources/photo/screenshot.png)
 
 ### Requirements
