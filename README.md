@@ -1,12 +1,18 @@
 ## Base on the springboot project, use to quickly build small and medium api or Restful API projects
+* Using flyway with Springboot
 * Makes use of JWT authentication for securing an exposed REST API
 * Use caching with annotations. You can add,delete,query and update information by redis.
 * How to use the @Transactional annotation and common pitfalls
+* Using Rabbitmq handle asynchronous request
+* Follow Telegram API to send message or photo for channel
 
 ## Reference Documents: 
+* https://www.baeldung.com/database-migrations-with-flyway
 * https://www.baeldung.com/spring-boot-security-autoconfiguration
 * https://www.baeldung.com/spring-cache-tutoriala
 * https://www.baeldung.com/transaction-configuration-with-jpa-and-spring
+* https://spring.io/guides/gs/messaging-rabbitmq/
+* https://core.telegram.org/bots/api
 
 ### Here is a quick teaser of an application :
 #### Using JWT authentication in Springboot
@@ -129,8 +135,11 @@
         return BindingBuilder.bind(queueEmail()).to(defaultExchange()).with(RabbitmqConfig.ROUTINGKEY1);
     }    
 
+#### Follow Telegram API to send message of photo for channel
+
 
 ### Requirements
+#### Mysql install by docker
 #### Redis install by docker
     docker pull redis:6.0.1-alpinec
     docker run -itd --name redis-test -p 6379:6379 redis
