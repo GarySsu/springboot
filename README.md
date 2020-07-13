@@ -139,7 +139,6 @@
 <img src="https://github.com/GarySsu/gary_springboot/blob/master/06_spring_boot_telegram_bot/src/main/resources/photo/screenshot.png" width="450">
 
 ### Requirements
-#### Mysql install by docker
 #### Redis install by docker
     docker pull redis:6.0.1-alpinec
     docker run -itd --name redis-test -p 6379:6379 redis
