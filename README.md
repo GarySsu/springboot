@@ -5,6 +5,7 @@
 * How to use the @Transactional annotation and common pitfalls
 * Using Rabbitmq handle asynchronous request
 * Follow Telegram API to send message or photo for channel
+* Building a Docker image for running a Spring Boot application
 
 ## Reference Documents: 
 * https://www.baeldung.com/database-migrations-with-flyway
@@ -13,6 +14,7 @@
 * https://www.baeldung.com/transaction-configuration-with-jpa-and-spring
 * https://spring.io/guides/gs/messaging-rabbitmq/
 * https://core.telegram.org/bots/api
+* https://spring.io/guides/gs/spring-boot-docker/
 
 ### Here is a quick teaser of an application :
 #### Using JWT authentication in Springboot
@@ -138,6 +140,14 @@
 #### Follow Telegram API to send message of photo for channel
 <img src="https://github.com/GarySsu/gary_springboot/blob/master/06_spring_boot_telegram_bot/src/main/resources/photo/screenshot.png" width="450">
 
+#### Building a Docker image for running a Spring Boot application
+     docker build -t my-java-app .
+     docker run -d -p 8086:8086 --name my-java my-java-app:latest
+     
+$ curl -X GET "http://localhost:8086/welcome/hi"
+```json       
+{"status":200,"msg":"success","data":"hi"}
+```
 ### Requirements
 #### Redis install by docker
     docker pull redis:6.0.1-alpinec

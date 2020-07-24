@@ -15,6 +15,7 @@
         <module>04_spring_boot_transaction</module>
         <module>05_spring_boot_rabbitmq</module>
         <module>06_spring_boot_telegram_bot</module>
+        <module>07_spring_boot_dockerize</module>
     </modules>
 
     <!-- spring boot -->
